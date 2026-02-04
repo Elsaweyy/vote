@@ -2,65 +2,273 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Top 10 Developers – Netlify Contest</title>
 
 <style>
-*{box-sizing:border-box;font-family:system-ui,-apple-system,Segoe UI,Roboto}
-body{margin:0;background:#0b0f1a;color:#e5e7eb;}
-.container{max-width:1200px;margin:auto;padding:24px;}
-h1{margin-bottom:14px}
+* {
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #0b0f1a;
+  color: #e5e7eb;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 24px;
+}
+
+h1 {
+  margin-bottom: 14px;
+  font-size: 1.8rem;
+  text-align: center;
+}
 
 /* prizes */
-.prizes{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:20px}
-.prize{background:#0f172a;border:1px solid #1f2937;border-radius:14px;padding:14px;display:flex;align-items:center;gap:10px;font-weight:600}
+.prizes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.prize {
+  background: #0f172a;
+  border: 1px solid #1f2937;
+  border-radius: 14px;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  justify-content: center;
+}
 
 /* timer */
-.contest-timer{background:#0f172a;border:1px solid #1f2937;border-radius:16px;padding:16px;margin-bottom:18px;text-align:center}
-.timer-box{display:flex;justify-content:center;gap:14px}
-.timer-box div{background:#020617;border-radius:12px;padding:10px 14px;min-width:60px}
-.timer-box span{display:block;font-size:20px;font-weight:700;color:#38bdf8}
-.timer-box small{font-size:11px;color:#94a3b8}
+.contest-timer {
+  background: #0f172a;
+  border: 1px solid #1f2937;
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 18px;
+  text-align: center;
+}
+
+.timer-box {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.timer-box div {
+  background: #020617;
+  border-radius: 12px;
+  padding: 10px 14px;
+  min-width: 50px;
+}
+
+.timer-box span {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #38bdf8;
+}
+
+.timer-box small {
+  font-size: 10px;
+  color: #94a3b8;
+}
 
 /* filters */
-.top-bar{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px}
-.top-bar input,.top-bar select{background:#020617;border:1px solid #1f2937;border-radius:10px;color:#fff;padding:10px 12px}
+.top-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 14px;
+  justify-content: center;
+}
+
+.top-bar input,
+.top-bar select {
+  background: #020617;
+  border: 1px solid #1f2937;
+  border-radius: 10px;
+  color: #fff;
+  padding: 10px 12px;
+  font-size: 0.9rem;
+}
 
 /* grid */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
 
 /* card */
-.card{background:#0f172a;border:1px solid #1f2937;border-radius:18px;padding:14px;position:relative;overflow:hidden;transition:.2s}
-.card:hover{transform:translateY(-4px)}
+.card {
+  background: #0f172a;
+  border: 1px solid #1f2937;
+  border-radius: 18px;
+  padding: 14px;
+  position: relative;
+  overflow: hidden;
+  transition: 0.2s;
+}
 
-.rank-badge{position:absolute;top:10px;left:10px;background:#020617;border-radius:999px;padding:4px 8px;font-size:12px}
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.rank-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #020617;
+  border-radius: 999px;
+  padding: 4px 8px;
+  font-size: 12px;
+  z-index: 2;
+}
 
 /* avatar */
-.avatar-wrap{position:relative;width:92px;margin:auto}
-.avatar{width:92px;height:92px;border-radius:50%;object-fit:cover;border:3px solid #1f2937;display:block}
+.avatar-wrap {
+  position: relative;
+  width: 80px;
+  margin: auto;
+}
 
-/* top badges over image */
-.top-icon{position:absolute;top:-10px;right:-10px;background:#020617;border-radius:50%;padding:6px;border:1px solid #1f2937}
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #1f2937;
+  display: block;
+}
 
-.name{text-align:center;margin-top:8px;font-weight:600}
+/* top badges */
+.top-icon {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #020617;
+  border-radius: 50%;
+  padding: 6px;
+  border: 1px solid #1f2937;
+}
 
-.meta{margin-top:10px;display:grid;gap:6px;font-size:13px;color:#cbd5f5}
+/* text */
+.name {
+  text-align: center;
+  margin-top: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+}
 
-.votes{margin-top:8px;font-weight:600}
+.meta {
+  margin-top: 10px;
+  display: grid;
+  gap: 6px;
+  font-size: 12px;
+  color: #cbd5f5;
+}
 
-.country-bar{margin-top:8px;display:flex;align-items:center;gap:8px}
-.bar{flex:1;height:10px;background:#020617;border-radius:999px;overflow:hidden}
-.bar span{display:block;height:100%;background:linear-gradient(90deg,#38bdf8,#6366f1)}
+.votes {
+  margin-top: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
 
-.links{margin-top:8px;font-size:12px}
-.links a{color:#60a5fa;text-decoration:none}
+.country-bar {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bar {
+  flex: 1;
+  height: 8px;
+  background: #020617;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.bar span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #38bdf8, #6366f1);
+}
+
+.links {
+  margin-top: 8px;
+  font-size: 11px;
+}
+
+.links a {
+  color: #60a5fa;
+  text-decoration: none;
+}
 
 /* vote button */
-.vote-btn{margin-top:10px;width:100%;padding:8px 0;border:none;border-radius:10px;background:#6366f1;color:#fff;font-weight:600;cursor:pointer;transition:.2s}
-.vote-btn:hover{background:#38bdf8}
+.vote-btn {
+  margin-top: 10px;
+  width: 100%;
+  padding: 8px 0;
+  border: none;
+  border-radius: 10px;
+  background: #6366f1;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.vote-btn:hover {
+  background: #38bdf8;
+}
 
 /* svg icons */
-.ui-icon{width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;vertical-align:middle}
-.ui-icon svg{width:18px;height:18px;display:block}
+.ui-icon {
+  width: 18px;
+  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+.ui-icon svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .prizes { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
+  .avatar-wrap { width: 70px; }
+  .avatar { width: 70px; height: 70px; }
+  .timer-box div { min-width: 45px; padding: 8px 10px; }
+  .name { font-size: 0.9rem; }
+  .meta { font-size: 11px; }
+  .vote-btn { font-size: 0.85rem; }
+}
+
+@media (max-width: 480px) {
+  .prizes { grid-template-columns: 1fr; }
+  .grid { grid-template-columns: 1fr; }
+  .top-bar { flex-direction: column; gap: 6px; }
+}
 </style>
 </head>
 <body>
@@ -70,32 +278,32 @@ h1{margin-bottom:14px}
 <h1>Top 10 Developers – Netlify Contest</h1>
 
 <div class="prizes">
-<div class="prize"><span data-icon="crown"></span> 1st Prize – $100,000</div>
-<div class="prize"><span data-icon="two"></span> 2nd Prize – $50,000</div>
-<div class="prize"><span data-icon="three"></span> 3rd Prize – $25,000</div>
+  <div class="prize"><span data-icon="crown"></span> 1st Prize – $100,000</div>
+  <div class="prize"><span data-icon="two"></span> 2nd Prize – $50,000</div>
+  <div class="prize"><span data-icon="three"></span> 3rd Prize – $25,000</div>
 </div>
 
 <div id="contestTimer" class="contest-timer">
-<div style="margin-bottom:10px;font-weight:600;">Competition ends in</div>
-<div class="timer-box">
-<div><span id="tDays">00</span><small>Days</small></div>
-<div><span id="tHours">00</span><small>Hours</small></div>
-<div><span id="tMinutes">00</span><small>Minutes</small></div>
-<div><span id="tSeconds">00</span><small>Seconds</small></div>
-</div>
+  <div style="margin-bottom:10px;font-weight:600;">Competition ends in</div>
+  <div class="timer-box">
+    <div><span id="tDays">00</span><small>Days</small></div>
+    <div><span id="tHours">00</span><small>Hours</small></div>
+    <div><span id="tMinutes">00</span><small>Minutes</small></div>
+    <div><span id="tSeconds">00</span><small>Seconds</small></div>
+  </div>
 </div>
 
 <div class="top-bar">
-<input id="search" placeholder="Search name...">
-<select id="countryFilter">
-<option value="all">All countries</option>
-<option value="eg">Egypt</option>
-<option value="us">USA</option>
-</select>
-<select id="sortBy">
-<option value="votes">Sort by votes</option>
-<option value="projects">Sort by projects</option>
-</select>
+  <input id="search" placeholder="Search name...">
+  <select id="countryFilter">
+    <option value="all">All countries</option>
+    <option value="eg">Egypt</option>
+    <option value="us">USA</option>
+  </select>
+  <select id="sortBy">
+    <option value="votes">Sort by votes</option>
+    <option value="projects">Sort by projects</option>
+  </select>
 </div>
 
 <div id="list" class="grid"></div>
@@ -103,7 +311,7 @@ h1{margin-bottom:14px}
 </div>
 
 <script>
-const ICONS={
+const ICONS = {
 male:`<svg viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2"><circle cx="10" cy="10" r="6"/><path d="M14 6l6-6"/><path d="M15 2h5v5"/></svg>`,
 female:`<svg viewBox="0 0 24 24" fill="none" stroke="#f472b6" stroke-width="2"><circle cx="12" cy="8" r="5"/><path d="M12 13v7"/><path d="M9 17h6"/></svg>`,
 crown:`<svg viewBox="0 0 24 24" fill="#facc15"><path d="M2 8l5 5 5-7 5 7 5-5v10H2z"/></svg>`,
@@ -115,36 +323,23 @@ us:`<svg viewBox="0 0 24 24"><rect width="24" height="24" fill="#b91c1c"/><rect 
 globe:`<svg viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 010 18"/></svg>`
 };
 
-// المتسابقين
 const players=[
-{id:1,name:"Sophia Dev",avatar:"https://i.pravatar.cc/150?img=32",country:"us",projects:24,gender:"female",votes:0},
-{id:2,name:"Ahmed Elsawey",avatar:"https://cdn.discordapp.com/avatars/936412112249569341/c07e356db97ccddd3a24fc7a79aad38d.png",country:"eg",projects:18,gender:"male",votes:0},
-{id:3,name:"Oliver Noah",avatar:"https://i.pravatar.cc/150?img=65",country:"us",projects:12,gender:"male",votes:0},
-{id:4,name:"Ali Hacker",avatar:"https://i.pravatar.cc/150?img=1",country:"us",projects:18,gender:"male",votes:0},
-{id:5,name:"Charli AI",avatar:"https://i.pravatar.cc/150?img=12",country:"us",projects:20,gender:"male",votes:0},
-{id:6,name:"Omar Tech",avatar:"https://i.pravatar.cc/150?img=4",country:"us",projects:10,gender:"male",votes:0},
-{id:7,name:"Laila Web",avatar:"https://i.pravatar.cc/150?img=19",country:"us",projects:14,gender:"female",votes:0},
-{id:8,name:"Youssef Dev",avatar:"https://i.pravatar.cc/150?img=3",country:"us",projects:19,gender:"male",votes:0},
-{id:9,name:"Nour Code",avatar:"https://i.pravatar.cc/150?img=29",country:"us",projects:16,gender:"female",votes:0},
-{id:10,name:"Khaled Script",avatar:"https://i.pravatar.cc/150?img=56",country:"us",projects:22,gender:"male",votes:0}
+{id:1,name:"Sophia Dev",avatar:"https://i.pravatar.cc/150?img=32",country:"us",projects:24,gender:"female",votes:606865},
+{id:2,name:"Ahmed Elsawey",avatar:"https://cdn.discordapp.com/avatars/936412112249569341/c07e356db97ccddd3a24fc7a79aad38d.png",country:"eg",projects:18,gender:"male",votes:501230},
+{id:3,name:"Oliver Noah",avatar:"https://i.pravatar.cc/150?img=65",country:"us",projects:12,gender:"male",votes:605754},
+{id:4,name:"Ali Hacker",avatar:"https://i.pravatar.cc/150?img=1",country:"us",projects:18,gender:"male",votes:515324},
+{id:5,name:"Charli AI",avatar:"https://i.pravatar.cc/150?img=12",country:"us",projects:20,gender:"male",votes:505125},
+{id:6,name:"Omar Tech",avatar:"https://i.pravatar.cc/150?img=4",country:"us",projects:10,gender:"male",votes:501000},
+{id:7,name:"Laila Web",avatar:"https://i.pravatar.cc/150?img=19",country:"us",projects:14,gender:"female",votes:401230},
+{id:8,name:"Youssef Dev",avatar:"https://i.pravatar.cc/150?img=3",country:"us",projects:19,gender:"male",votes:301230},
+{id:9,name:"Nour Code",avatar:"https://i.pravatar.cc/150?img=29",country:"us",projects:16,gender:"female",votes:201560},
+{id:10,name:"Khaled Script",avatar:"https://i.pravatar.cc/150?img=56",country:"us",projects:22,gender:"male",votes:191560}
 ];
-
-// تصفير الأصوات مرة واحدة فقط
-players.forEach(p => {
-  localStorage.setItem(`votes_${p.id}`, 0);
-  localStorage.removeItem(`voted_${p.id}`);
-});
 
 const list=document.getElementById("list");
 const search=document.getElementById("search");
 const countryFilter=document.getElementById("countryFilter");
 const sortBy=document.getElementById("sortBy");
-
-// تحميل الأصوات من localStorage بعد التصفير
-players.forEach(p=>{
-  const saved=localStorage.getItem(`votes_${p.id}`);
-  if(saved) p.votes=parseInt(saved);
-});
 
 function render(){
 let arr=[...players];
@@ -166,31 +361,24 @@ if(i===2) badge='<span data-icon="three"></span>';
 list.insertAdjacentHTML("beforeend",`
 <div class="card">
 <div class="rank-badge">#${i+1}</div>
-
 <div class="avatar-wrap">
 <img class="avatar" src="${p.avatar}">
 ${badge?`<div class="top-icon">${badge}</div>`:""}
 </div>
-
 <div class="name">${p.name}</div>
-
 <div class="meta">
 <div><span data-icon="${p.gender}"></span> ${p.gender}</div>
 <div>Projects: ${p.projects}</div>
 <div>Country: ${p.country.toUpperCase()}</div>
 </div>
-
 <div class="votes">
 <span data-icon="group"></span> ${p.votes.toLocaleString()} votes
 </div>
-
 <div class="country-bar">
 <span data-icon="${p.country}"></span>
 <div class="bar"><span style="width:${(p.votes/maxVotes)*100}%"></span></div>
 </div>
-
 <div class="links"><a href="#">Netlify profile</a></div>
-
 <button class="vote-btn" data-id="${p.id}">Vote</button>
 </div>
 `);
@@ -198,7 +386,7 @@ ${badge?`<div class="top-icon">${badge}</div>`:""}
 
 replaceIcons();
 
-// اضافة حدث التصويت مع حفظ vote لكل مستخدم مرة واحدة فقط
+// اضافة حدث التصويت
 document.querySelectorAll(".vote-btn").forEach(btn=>{
   btn.onclick=()=>{
     const id=parseInt(btn.getAttribute("data-id"));
@@ -253,10 +441,10 @@ if(diff<=0){
 document.getElementById("contestTimer").innerHTML="Competition finished";
 return;
 }
-tDays.textContent=Math.floor(diff/86400000);
-tHours.textContent=Math.floor(diff/3600000%24).toString().padStart(2,"0");
-tMinutes.textContent=Math.floor(diff/60000%60).toString().padStart(2,"0");
-tSeconds.textContent=Math.floor(diff/1000%60).toString().padStart(2,"0");
+document.getElementById("tDays").textContent=Math.floor(diff/86400000);
+document.getElementById("tHours").textContent=Math.floor(diff/3600000%24).toString().padStart(2,"0");
+document.getElementById("tMinutes").textContent=Math.floor(diff/60000%60).toString().padStart(2,"0");
+document.getElementById("tSeconds").textContent=Math.floor(diff/1000%60).toString().padStart(2,"0");
 }
 updateTimer();
 setInterval(updateTimer,1000);
